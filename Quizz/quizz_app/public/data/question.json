@@ -1,0 +1,18 @@
+{
+    "theme":{
+        "histoire":{
+            "question": "Quelle est le premier president des etat unie",
+            "bonne-reponce": "George Washington",
+            "mauvaise-reponce": ["Donald Trump", "Bruce Willis" , "Franklin D Rousvelt"]
+        },
+        "Geographie":{
+            "question": "Quelle est le plus grand pays du monde",
+            "bonne-reponce": "Russie",
+            "mauvaise-reponce": [
+                "Chine",
+                "Etat-Unies",
+                "france"
+            ]
+        }
+    }
+}
