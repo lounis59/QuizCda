@@ -39,4 +39,7 @@ const back = () => {
     border-radius: 10px;
     font-size: 1.5rem;
 }
+.back:hover{
+    cursor: pointer;
+}
 </style>

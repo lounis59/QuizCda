@@ -36,10 +36,10 @@ const submitUpdate = async () => {
            body: JSON.stringify({name: username.value, password : password.value, email: email.value, prenom: firstName.value , nom: lastName.value, id : store.state.users.id})
         })
         if (response.ok) {
-         console.log("modification reussie" , response.json());
-         const data = await response.json()
-         store.dispatch('login' , data)
-        //  route.push('/profil')
+            const data = await response.json()
+            store.dispatch('login' , data)
+            console.log("modification reussie" , localStorage.getItem('user'));
+         route.push('/profil')
         
         }
     } catch (err) {

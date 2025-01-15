@@ -59,6 +59,7 @@ onMounted(() => {
 .home{
   width: 80vw;
   height: max-content;
+  padding: 50px;
   // min-height: 30vh;
   border: 2px solid var(--main-color-div);
   margin-top: 100px;
@@ -81,6 +82,12 @@ onMounted(() => {
   }
   .Btn:hover {
     cursor: pointer;
+  }
+  .message{
+    border: 1px solid var(--main-color-div);
+    border-radius: 20px;
+    color: var(--main-color-div);
+    padding: 10px;
   }
   
 }

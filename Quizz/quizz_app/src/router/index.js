@@ -4,6 +4,7 @@ import Sign from '../views/Sign.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import Profil from '@/views/Profil.vue'
 import UpdateProfile from '@/views/UpdateProfile.vue'
+import Play from '@/views/Play.vue'
 
 const routes = [
   {
@@ -34,6 +35,11 @@ const routes = [
     path: '/update',
     name: 'update',
     component: UpdateProfile,
+  },
+  {
+    path: '/play',
+    name: 'play',
+    component: Play
   }
 ]
 
