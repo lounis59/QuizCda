@@ -4,7 +4,7 @@
     <div class="Btn" @click="removeTheme" v-if="theme">Retour</div>
     <div v-if="theme">
 
-        <BtnQuestion :theme=" index.theme " v-for="index in theme" :key="index"  :visibility="show" @showQuestion="showMe" :question="index.theme.question"/>
+        <BtnQuestion :theme=" index" v-for="index in themes" :key="index"  :visibility="show" @showQuestion="showMe(index)" :questions="question" />
     </div>
 </div>
 
@@ -16,26 +16,93 @@ import { useRouter } from 'vue-router';
 import BtnQuestion from '@/components/BtnQuestion.vue';
 
 const route = useRouter();
-const theme = ref('');
+const themes = ref([]);
+const theme = ref(false);
 const show = ref(true)
+const question = ref([{
+    question: '',
+    reponce: '',
+}])
+const reponce = ref([])
+const url = process.env.VUE_APP_API_URL
 
-const showMe = ()=>{
+const showMe = async  (index)=>{
+    
+    try{
+        const response = 
+        await fetch(`${url}/api/themes/question/${themes.value.indexOf(index)+1}`,{
+            method: 'GET',
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        })
+        
+        if (response.ok) {
+            themes.value.length = 1
+            const data = await response.json()
+            question.value =  [{}]
+            data.forEach(elem => {
+                question.value.push({
+                    question: elem.question ,
+                    reponce: elem.bonne_reponse
+                })
+                console.log("t la ",elem.bonne_reponse);
+                
+                }
+            )
+            
+
+            
+        }
+    } catch (err) {
+        console.log(err);
+        
+    }
     show.value = !show.value
 }
-const selectTheme = () => 
+const selectTheme = async() => 
 {
     
-    fetch('data/question.json')
-    .then(response => response.json())
-    .then(data => {
-        theme.value = data;    
-        console.log('ici' ,theme.value)})
-    .catch(error => console.error('erreur lors du chargement du JSON:', error)); 
-    show.value = !show.value
-
+    try{
+        
+        console.log('la',themes.value.length);
+        
+        const response = 
+        await fetch(`${url}/api/themes/theme`,{
+            method: 'GET',
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        })
+        if (response.ok) {
+            const data = await response.json()
+            themes.value = [] 
+            data.forEach(elem => {
+                themes.value.push(elem.theme)
+                
+            })
+            if (themes.value.length > 0) {
+                theme.value = !theme.value
+            } else if (theme.value.length = 0) {
+                theme.value = false
+            }
+            
+           
+            console.log(themes.value.length);
+                
+            }
+            
+            
+        
+    } catch (err) {
+        console.log(err);
+        
+    }
+    
 }
 const removeTheme = () => {
-    theme.value = '';
+    theme.value = !theme.value
+    show.value = !show.value
 }
 
 

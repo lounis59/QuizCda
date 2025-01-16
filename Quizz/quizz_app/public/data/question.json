@@ -4,8 +4,8 @@
         "questions": [
             {
                 "question": "Quel est le premier président des États-Unis ?",
-                "bonne-reponse": "George Washington",
-                "mauvaises-reponses": [
+                "bonne_reponse": "George Washington",
+                "mauvaises_reponses": [
                     "Donald Trump",
                     "Bruce Willis",
                     "Franklin D. Roosevelt"
@@ -18,8 +18,8 @@
         "questions": [
             {
                 "question": "Quel est le plus grand pays du monde ?",
-                "bonne-reponse": "Russie",
-                "mauvaises-reponses": [
+                "bonne_reponse": "Russie",
+                "mauvaises_reponses": [
                     "Chine",
                     "États-Unis",
                     "France"

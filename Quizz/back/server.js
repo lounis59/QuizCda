@@ -13,9 +13,11 @@ app.use(bodyParser.json());
 
 const userRoutes = require('./routes/users');
 const userTodo = require('./routes/todo.js');
+const themeRoute = require('./routes/theme.js');
 
 app.use('/api/users', userRoutes)
 app.use('/api/todo', userTodo)
+app.use('/api/themes', themeRoute)
 
 
 const port = process.env.PORT || 3000;
