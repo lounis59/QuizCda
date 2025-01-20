@@ -29,4 +29,17 @@ router.get('/question/:id', (req , res) => {
     })
 })
 
+router.get('/response/:id', (req , res) =>{
+    const idQuestion = req.params.id
+    const sql = "SELECT * FROM response WHERE question_id = ?" 
+
+    db.query(sql , [idQuestion] , (err,results) => {
+        if (err) {
+            return res.status(500).send(err)
+        } else {
+            res.status(200).json(results);
+        }
+    })
+})
+
 module.exports=router;

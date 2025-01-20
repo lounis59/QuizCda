@@ -19,10 +19,7 @@ const route = useRouter();
 const themes = ref([]);
 const theme = ref(false);
 const show = ref(true)
-const question = ref([{
-    question: '',
-    reponce: '',
-}])
+const question = ref()
 const reponce = ref([])
 const url = process.env.VUE_APP_API_URL
 
@@ -40,16 +37,18 @@ const showMe = async  (index)=>{
         if (response.ok) {
             themes.value.length = 1
             const data = await response.json()
-            question.value =  [{}]
+            question.value =  []
+            console.log("t la ",question.value );
             data.forEach(elem => {
                 question.value.push({
-                    question: elem.question ,
-                    reponce: elem.bonne_reponse
+                    question: elem.question, 
+                    id: elem.id_question
                 })
-                console.log("t la ",elem.bonne_reponse);
+                console.log("tu est la ", question.value);
                 
-                }
-            )
+            }
+        )
+        
             
 
             
